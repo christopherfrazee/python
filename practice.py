@@ -1,4 +1,3 @@
-# Python 2.7
 ##########################################
 # This code has no fuctional purpose     #
 # other than to serve as coding practice #
@@ -12,9 +11,9 @@ import math
 import csv
 import re
 import sys
-import ssl
-import socket
-from BeautifulSoup import BeautifulSoup as bs
+import requests
+from bs4 import BeautifulSoup
+import ipaddress
 
 #########################
 # initial configurables #
@@ -35,24 +34,25 @@ WebSite = 'www.google.com'
 Header1 = 'GET / HTTP/1.1\r\nHost: '
 Header2 = '\r\nConnection: close\r\n\r\n'
 HttpHeader = Header1 + WebSite + Header2
-
+InputCsvFile = 'test.csv'
+Key = '\'{:>3}{:>3}{:>3}{:>3}\'.format(*key.split(\'.\'))'
 ########################
 # do a little math fun #
 ########################
 
 MathPowOut = math.pow(PowNumber, Power)
-print "{} to the {} power is {}".format(PowNumber, Power, MathPowOut)
+print('{} to the {} power is {}'.format(PowNumber, Power, MathPowOut))
 
 ################
 # incrementing #
 ################
 
-print "Count with while loop and increment by {}".format(Count)
+print('Count with while loop and increment by {}'.format(Count))
 while Count < 11:
-    print Count
+    print(Count)
     Count = Count + Increment
 else:
-    print 'Counting complete.'
+    print('Counting complete.')
 
 ##################
 # numeric ranges #
@@ -61,49 +61,48 @@ else:
 for RangeNum in range(LowNumber, HighNumber):
     print(RangeNum)
 else:
-    print "Counting by range {} - {} complete".format(LowNumber, HighNumber)
+    print('Counting by range {} - {} complete'.format(LowNumber, HighNumber))
 
 ##########################
 # put data in array/list #
 ##########################
 
-print "working with printing arrays"
-print "{}\n{}\n{}\n".format(Ips[0], Ips[1], Ips[2])
+print('working with printing arrays')
+print('{}\n{}\n{}\n'.format(Ips[0], Ips[1], Ips[2]))
 
 ####################################
 # append elements to an array/list #
 #################################### 
 
-print "append elements to array"
+print('append elements to array')
 Ips.append(NewIp)
 for Ip in Ips:
     print(Ip)
-print "sorted IP addresses in a list"
+print('sorted IP addresses in a list')
 
 ###############################
 # sort a list of IP addresses #
 ###############################
 
-Ips.sort(key=lambda ip: map(int, ip.split('.')))
-for Ip in Ips:
+#Ips.sorted(ip,key=lambda)
+for Ip in sorted(Ips):
     print(Ip)
 
 #############################
 # do a little file handling #
 #############################
 
-print "practice reading from csv file"
-with open('test.csv') as csvfile:
+print('practice reading from csv file')
+with open(InputCsvFile) as csvfile:
     Row = csv.reader(csvfile, delimiter=',')
     for Column in Row:
         print(Column[0],Column[1],Column[2])
         Ips.append(Column[0])
         Ips.append(Column[1])
-	Ips.append(Column[2])
-print "append new IP's from csv, sort then print them"
-Ips.sort(key=lambda ip: map(int, ip.split('.')))
+        Ips.append(Column[2])
+print('append new IP\'s from csv, sort then print them')
 f = open(OutFile,'w')
-print "print externally  routable IP addresses to a file"
+print('print externally routable IP addresses to a file')
 
 #####################################
 # iterate through list, filter data #
@@ -112,29 +111,17 @@ print "print externally  routable IP addresses to a file"
 for Ip in Ips:
     regex = re.compile("^192.168.|^10.1.")
     if re.match(regex, Ip):
-        print "{} is non puplic routable. SKIPPING".format(Ip)
+        print('{} is non puplic routable. SKIPPING'.format(Ip))
     else:
-        print "{} OK".format(Ip)
-	f.write(' '.join(('IP:', str(Ip), "\n")))
+        print('{} OK'.format(Ip))
+        f.write(' '.join(('IP:', str(Ip), "\n")))
 
 ###########################################
 # pull down some data from a https server #
 ###########################################
-
 f = open(IndexFile,'w')
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect((WebSite, 443))
-s = ssl.wrap_socket(s, keyfile=None, certfile=None, server_side=False, cert_reqs=ssl.CERT_NONE, ssl_version=ssl.PROTOCOL_SSLv23)
-
-s.sendall(HttpHeader)
-
-while True:
-
-    indexFile = s.recv(4096)
-    if not indexFile:
-        s.close()
-        break
-    soup = bs(indexFile)           # make BeautifulSoup
-    PrettyHTML = soup.prettify()   # prettify the html
-    f.write(PrettyHTML)            # dump the results to a file
+indexFile = requests.get("https://www.google.com")
+indexFile.status_code
+200
+f.write(indexFile.text)            		# dump the results to a file
   
