@@ -1,5 +1,5 @@
 ##########################################
-# This code has no fuctional purpose     #
+# This code has no real fuctional purpose#
 # other than to serve as coding practice #
 ##########################################
 
@@ -12,7 +12,6 @@ import csv
 import re
 import sys
 import requests
-from bs4 import BeautifulSoup
 import ipaddress
 
 #########################
@@ -36,6 +35,7 @@ Header2 = '\r\nConnection: close\r\n\r\n'
 HttpHeader = Header1 + WebSite + Header2
 InputCsvFile = 'test.csv'
 Key = '\'{:>3}{:>3}{:>3}{:>3}\'.format(*key.split(\'.\'))'
+
 ########################
 # do a little math fun #
 ########################
@@ -123,5 +123,5 @@ f = open(IndexFile,'w')
 indexFile = requests.get("https://www.google.com")
 indexFile.status_code
 200
-f.write(indexFile.text)            		# dump the results to a file
+f.write(indexFile.text)    # dump the results to a file
   
