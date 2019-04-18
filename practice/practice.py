@@ -1,9 +1,3 @@
-##########################################
-# This code has no real fuctional purpose#
-# other than to serve as coding practice #
-# 
-##########################################
-
 import math
 import csv
 import re
@@ -16,14 +10,6 @@ import argparse
 # initial configurables #
 #########################
 
-parser = argparse.ArgumentParser()
-parser.add_argument('-i', action="store", dest='InputCsvFile', default='test.csv', help='input CSV FIle you want to import', required=True )
-parser.add_argument('-s', action="store", dest='IndexFile', default='index.html', help='html file name you want to grab', required=True )
-parser.add_argument('-w', action="store", dest='WebSite', default='www.google.com', help='web server name you want to get file from', required=True )
-parser.add_argument('-o', action="store", dest='OutFile', default='test_output.txt', help='output file name', required=True )
-args = parser.parse_args()
-print(args)
-
 Count = 1
 MaxCount = 8
 Increment = 1
@@ -33,14 +19,23 @@ PowNumber = 7
 Power = 2
 Ips = ["43.34.133.6", "43.78.99.7", "10.1.1.1"]
 NewIp = "192.168.0.1"
-#OutFile = "test_output.txt"
-#IndexFile = "index.html"
-#WebSite = 'www.google.com'
 Header1 = 'GET / HTTP/1.1\r\nHost: '
 Header2 = '\r\nConnection: close\r\n\r\n'
-HttpHeader = Header1 + args.WebSite + Header2
-#InputCsvFile = 'test.csv'
 Key = '\'{:>3}{:>3}{:>3}{:>3}\'.format(*key.split(\'.\'))'
+
+########################
+# collect runtime vars #
+########################
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-i', action="store", dest='InputCsvFile', default='test.csv', help='input CSV FIle you want to import', required=True )
+parser.add_argument('-s', action="store", dest='IndexFile', default='index.html', help='html file name you want to grab', required=True )
+parser.add_argument('-w', action="store", dest='WebSite', default='www.google.com', help='web server name you want to get file from', required=True )
+parser.add_argument('-o', action="store", dest='OutFile', default='test_output.txt', help='output file name', required=True )
+args = parser.parse_args()
+print(args)
+
+HttpHeader = Header1 + args.WebSite + Header2
 
 ########################
 # do a little math fun #
