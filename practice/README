@@ -1,4 +1,27 @@
-##########################################
-# This code has no real fuctional purpose#
-# other than to serve as coding practice #
-##########################################
+In my attempt to refresh my skills in regards to high tech
+I am generating everything in this directory purely as a
+resource or of academic value to myself.
+
+practice_snippets.py -  
+
+is basically code snippets that I have created as a single
+A quick refresh on commonly used logic or tasks done in 
+applications (file io, regular expressions, socket IO, loops,
+conditionals, numeric functions, manipulating lists and 
+dictionary content.
+
+pairs.py -
+
+I created this as part of a online coding challenge site.
+Can't remember which one.  Regardless, it was a interesting
+challenge.  Sadly the next one in the challenge I thought
+was a little too academic (good for application engineer)
+but not devopsy type of person, so I stopped.
+
+oo_stuff.py
+
+By default my mind currently does not think in terms of 
+"objects" but rather "scalars", so I chose this practice
+purposely to exercise the use of the object oriented 
+nature of Python.  Once I realized terraform is very object
+oriented, I figured this would be a good practice to do.
