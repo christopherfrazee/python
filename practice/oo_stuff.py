@@ -1,20 +1,22 @@
 
-elevators = ["elevator0", "elevator1", "elevator2"]
-
-elevator0Button = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-elevator1Button = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-elevator2Button = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  
+elevators = ["0", "1", "2"]
 
 
-elevator0.curFloor()    # last floor reached
-elevator0.direction()   # up/down
-elevator0.destination() # next floor in current direction
+elevator0Button = ["off", "on", "off", "off", "off", "off", "off", "off", "off", "off"]
+elevator1Button = ["off", "off", "on", "off", "off", "off", "off", "off", "off", "off"]
+elevator2Button = ["off", "off", "off", "off", "off", "off", "off", "off", "off", "off"]  
 
-elevator1.curFloor()    
-elevator1.direction()
-elevator1.destination()
+class elevator:
+    elevator.name() 
+    elevator.CurFloor()    # last floor reached
+    elevator.Direction()   # up/down/idle
+    elevator.Destination() # next floor in current direction
 
-elevator2.curFloor()
-elevator2.direction()
-elevator2.destination()
+
+indices = [i for i, FloorNumButton in enumerate(Elevator0Button) if FloorNumButton == "on"]
+print(indices)
+for elevator in elevators:
+    print(elevator)
+
+    
 

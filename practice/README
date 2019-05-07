@@ -2,7 +2,7 @@ In my attempt to refresh my skills in regards to high tech
 I am generating everything in this directory purely as a
 resource or of academic value to myself.
 
-practice_snippets.py -  
+practice_snippets.py  
 
 is basically code snippets that I have created as a single
 A quick refresh on commonly used logic or tasks done in 
@@ -10,7 +10,7 @@ applications (file io, regular expressions, socket IO, loops,
 conditionals, numeric functions, manipulating lists and 
 dictionary content.
 
-pairs.py -
+pairs.py
 
 I created this as part of a online coding challenge site.
 Can't remember which one.  Regardless, it was a interesting
@@ -25,3 +25,5 @@ By default my mind currently does not think in terms of
 purposely to exercise the use of the object oriented 
 nature of Python.  Once I realized terraform is very object
 oriented, I figured this would be a good practice to do.
+The specific choice of code is the concept of logic
+for an elevator.  Came from an interview question.
